@@ -25,7 +25,7 @@ public class Cliente {
 
 		Reply res = Reply.parseDelimitedFrom(cliente.getInputStream());
 
-		System.out.println("Req: " + res.getId() + " -> Result: " + res.getRes());
+		System.out.println("Resultado: " + res.getRes());
 	}
 
 	public static Request obterDados() {
