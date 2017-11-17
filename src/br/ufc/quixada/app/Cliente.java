@@ -5,6 +5,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
+import br.ufc.quixada.calc.Calculadora.Reply;
 import br.ufc.quixada.calc.Calculadora.Request;
 import br.ufc.quixada.calc.Calculadora.Request.Operacao;
 
@@ -17,6 +18,14 @@ public class Cliente {
 
 	public static void iniciarCliente(String ip, int porta) throws UnknownHostException, IOException {
 		Socket cliente = new Socket(ip, porta);
+		
+		Request req = obterDados();
+		
+		req.writeDelimitedTo(cliente.getOutputStream());
+		
+		Reply res = Reply.parseDelimitedFrom(cliente.getInputStream());
+		
+		System.out.println("Req" + res.getId() + " -> Result: " + res.getRes());
 	}
 
 	public static Request obterDados() {
