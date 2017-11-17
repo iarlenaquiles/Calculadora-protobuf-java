@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import br.ufc.quixada.calc.Calculadora.Reply;
 import br.ufc.quixada.calc.Calculadora.Request;
 
 
@@ -25,6 +26,10 @@ public class Servidor {
 			Request req = Request.parseDelimitedFrom(sock.getInputStream());
 			
 			Double resultado = calcular(req);
+			
+			Reply res = Reply.newBuilder().setId(req.getId()).setRes(resultado).build();
+			
+			res.writeDelimitedTo(sock.getOutputStream());
 			
 		}
 	}
