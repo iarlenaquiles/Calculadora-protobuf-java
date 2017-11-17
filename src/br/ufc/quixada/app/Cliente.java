@@ -12,19 +12,19 @@ import br.ufc.quixada.calc.Calculadora.Request.Operacao;
 public class Cliente {
 	static int id = 0;
 
-	public static void main(String[] args) {
-
+	public static void main(String[] args) throws UnknownHostException, IOException {
+		iniciarCliente("localhost", 8789);
 	}
 
 	public static void iniciarCliente(String ip, int porta) throws UnknownHostException, IOException {
 		Socket cliente = new Socket(ip, porta);
-		
+
 		Request req = obterDados();
-		
+
 		req.writeDelimitedTo(cliente.getOutputStream());
-		
+
 		Reply res = Reply.parseDelimitedFrom(cliente.getInputStream());
-		
+
 		System.out.println("Req" + res.getId() + " -> Result: " + res.getRes());
 	}
 
