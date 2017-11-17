@@ -1,12 +1,17 @@
 package br.ufc.quixada.app;
 
+import static br.ufc.quixada.calc.Calculadora.Request.Operacao.SOM;
+import static br.ufc.quixada.calc.Calculadora.Request.Operacao.SUB;
+import static br.ufc.quixada.calc.Calculadora.Request.Operacao.DIV;
+import static br.ufc.quixada.calc.Calculadora.Request.Operacao.MUL;
+
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
 import br.ufc.quixada.calc.Calculadora.Reply;
 import br.ufc.quixada.calc.Calculadora.Request;
-
+import br.ufc.quixada.calc.Calculadora.Request.Operacao;
 
 
 public class Servidor {
@@ -34,8 +39,18 @@ public class Servidor {
 		}
 	}
 	
-	public static Double calcular(Request req){
-		return null;
+	public static double calcular(Request req){
+		Operacao op = req.getOp();
+		double n1 = req.getN1();
+		double n2 = req.getN2();
+		
+		if(op == SOM){
+			return n1+n2;
+		}else if(op==SUB){
+			
+		}
+		
+		return 0;
 	}
 
 }
