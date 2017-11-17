@@ -25,7 +25,7 @@ public class Cliente {
 
 		Reply res = Reply.parseDelimitedFrom(cliente.getInputStream());
 
-		System.out.println("Req" + res.getId() + " -> Result: " + res.getRes());
+		System.out.println("Req: " + res.getId() + " -> Result: " + res.getRes());
 	}
 
 	public static Request obterDados() {
@@ -38,8 +38,8 @@ public class Cliente {
 		req.setN1(entrada.nextDouble());
 
 		System.out.println("Digite a operação!");
-		String op = entrada.nextLine();
-		req.setOp(getOperacao(op));
+		entrada.nextLine();
+		req.setOp(Operacao.forNumber(getOperacao(entrada.nextLine())));
 
 		System.out.println("Digite o segundo número!");
 		req.setN2(entrada.nextDouble());
@@ -49,15 +49,15 @@ public class Cliente {
 		return req.build();
 	}
 
-	public static Operacao getOperacao(String op) {
+	public static Integer getOperacao(String op) {
 		if (op.equals("+")) {
-			return Operacao.SOM;
+			return 0;
 		} else if (op.equals("-")) {
-			return Operacao.SUB;
+			return 1;
 		} else if (op.equals("*")) {
-			return Operacao.MUL;
+			return 2;
 		} else if (op.equals("/")) {
-			return Operacao.DIV;
+			return 3;
 		} else {
 			return null;
 		}
