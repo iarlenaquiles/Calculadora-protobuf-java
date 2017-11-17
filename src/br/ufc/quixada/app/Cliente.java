@@ -32,7 +32,12 @@ public class Cliente {
 		String op = entrada.nextLine();
 		req.setOp(getOperacao(op));
 
-		return null;
+		System.out.println("Digite o segundo número!");
+		req.setN2(entrada.nextDouble());
+
+		entrada.close();
+
+		return req.build();
 	}
 
 	public static Operacao getOperacao(String op) {
