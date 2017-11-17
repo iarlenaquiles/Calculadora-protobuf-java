@@ -39,8 +39,8 @@ public class Servidor {
 	}
 
 	public static double calcular(Request req) {
-		Operacao op = req.getOp();
 		double n1 = req.getN1();
+		Operacao op = req.getOp();
 		double n2 = req.getN2();
 
 		if (op == SOM) {
