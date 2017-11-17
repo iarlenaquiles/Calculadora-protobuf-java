@@ -6,6 +6,7 @@ import java.net.UnknownHostException;
 import java.util.Scanner;
 
 import br.ufc.quixada.calc.Calculadora.Request;
+import br.ufc.quixada.calc.Calculadora.Request.Operacao;
 
 public class Cliente {
 	static int id = 0;
@@ -29,11 +30,22 @@ public class Cliente {
 
 		System.out.println("Digite a operação!");
 		String op = entrada.nextLine();
+		req.setOp(getOperacao(op));
 
 		return null;
 	}
 
-	public static int getOperacao(String op) {
-		return 0;
+	public static Operacao getOperacao(String op) {
+		if (op.equals("+")) {
+			return Operacao.SOM;
+		} else if (op.equals("-")) {
+			return Operacao.SUB;
+		} else if (op.equals("*")) {
+			return Operacao.MUL;
+		} else if (op.equals("/")) {
+			return Operacao.DIV;
+		} else {
+			return null;
+		}
 	}
 }
