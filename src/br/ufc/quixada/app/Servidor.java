@@ -28,5 +28,9 @@ public class Servidor {
 			
 		}
 	}
+	
+	public static Double calcular(Request req){
+		return null;
+	}
 
 }
